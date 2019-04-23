@@ -19,7 +19,9 @@ def webhook():
   # We don't want to reply to ourselves!
 	
   if data['name'] != 'Principles Quiz Bot':
-    if "quiz" in data['text']:
+    if "quiz" in data['text'] and "exam" in data['text']:
+      msg = '{}, please specify if you are talking about a quiz or exam.'.format(data['name'])
+    elif "quiz" in data['text']:
       if "today" in data['text'] and day == 0:
         msg = '{}, yes. There is a quiz today.'.format(data['name'])
       elif "today" in data['text'] and day != 0:
@@ -33,7 +35,7 @@ def webhook():
         msg = '{}, the next quiz is on Monday the 29th.'.format(data['name'])
       elif "quiz about" in data['text'] or "cover" in data['text'] or "over" in data['text']:
         msg = '{}, I do not know what the next quiz is over because my creator had a dentist appointment.'.format(data['name'])
-    if "final" in data['text'] or "exam" in data['text']:
+    elif "final" in data['text'] or "exam" in data['text']:
       if "when" in data['text']:
         msg = '{}, the final exam is on Monday, May 6th at 4:30PM.'.format(data['name'])
   if len(msg) != 0:
