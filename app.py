@@ -18,7 +18,7 @@ def webhook():
   msg = ''
   # We don't want to reply to ourselves!
 	
-  if data['name'] != 'Quiz Bot':
+  if data['name'] != 'Principles Quiz Bot':
     if "quiz" in data['text']:
       if "today" in data['text'] and day == 0:
         msg = '{}, yes. There is a quiz today.'.format(data['name'])
