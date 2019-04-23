@@ -1,5 +1,6 @@
 import os
 import json
+import datetime
 
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
@@ -12,12 +13,17 @@ app = Flask(__name__)
 @app.route('/', methods=['POST'])
 def webhook():
   data = request.get_json()
+  now = datetime.datetime.today()
+  day = now.weekday()
 
   # We don't want to reply to ourselves!
 	
   if data['name'] != 'Test Quiz Bot':
     if "quiz" in data['text']:
-      msg = '{}, the next quiz is on Wedneday the 24th. It covers yield, classes, and other things.'.format(data['name'])
+      if "today" in data['text'] and day == 0:
+        msg = '{}, yes. There is a quiz today.'.format(data['name'])
+      elif "today" in data['text'] and day != 0:
+        msg = '{}, no. The next quiz is on Monday the 29th.'.format(data['name'])
       send_message(msg)
 
   return "ok", 200
