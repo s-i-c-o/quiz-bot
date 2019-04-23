@@ -14,7 +14,7 @@ def webhook():
   data = request.get_json()
 
   # We don't want to reply to ourselves!
-  if data['name'] != 'apnorton-test-bot':
+  if data['name'] != 'Test Quiz Bot':
     msg = '{}, you sent "{}".'.format(data['name'], data['text'])
     send_message(msg)
 
