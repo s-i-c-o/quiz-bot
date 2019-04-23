@@ -14,9 +14,11 @@ def webhook():
   data = request.get_json()
 
   # We don't want to reply to ourselves!
+	
   if data['name'] != 'Test Quiz Bot':
-    msg = '{}, you sent "{}".'.format(data['name'], data['text'])
-    send_message(msg)
+	if "quiz" in data['text']:
+		msg = '{}, the next quiz is on Wedneday the 24th. It covers yield, classes, and other things.'.format(data['name'])
+		send_message(msg)
 
   return "ok", 200
 
