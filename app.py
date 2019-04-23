@@ -15,7 +15,7 @@ def webhook():
   data = request.get_json()
   now = datetime.datetime.today()
   day = now.weekday()
-
+  msg = ''
   # We don't want to reply to ourselves!
 	
   if data['name'] != 'Test Quiz Bot':
@@ -29,6 +29,7 @@ def webhook():
     if "final" in data['text'] or "exam" in data['text']:
       if "when" in data['text']:
         msg = '{}, the final exam is on Monday, May 6th at 4:30PM.'.format(data['name'])
+  if len(msg) != 0:
       send_message(msg)
 
   return "ok", 200
