@@ -17,7 +17,7 @@ def webhook():
 	
   if data['name'] != 'Test Quiz Bot':
     if "quiz" in data['text']:
-      msg = 'The next quiz is on Wedneday the 24th. It covers yield, classes, and other things.'
+      msg = '{}, the next quiz is on Wedneday the 24th. It covers yield, classes, and other things.'.format(data['name'])
       send_message(msg)
 
   return "ok", 200
@@ -29,7 +29,6 @@ def send_message(msg):
   data = {
           'bot_id' : os.getenv('GROUPME_BOT_ID'),
           'text'   : msg,
-          'attachments': [{'type': mentions, 'user_ids':usrID}]
          }
   request = Request(url, urlencode(data).encode())
   json = urlopen(request).read().decode()
