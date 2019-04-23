@@ -24,6 +24,11 @@ def webhook():
         msg = '{}, yes. There is a quiz today.'.format(data['name'])
       elif "today" in data['text'] and day != 0:
         msg = '{}, no. The next quiz is on Monday the 29th.'.format(data['name'])
+      elif "tomorrow" in data['text']:
+        if day + 1 == 0:
+          msg = '{}, yes. There is a quiz tomorrow.'.format(data['name'])
+        else:
+          msg = '{}, no. There is NOT a quiz tomorrow.'.format(data['name'])
       elif "when" in data['text'] or "what day" in data['text']:
         msg = '{}, the next quiz is on Monday the 29th.'.format(data['name'])
       elif "quiz about" in data['text'] or "cover" in data['text'] or "over" in data['text']:
