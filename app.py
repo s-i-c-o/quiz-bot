@@ -13,30 +13,30 @@ app = Flask(__name__)
 @app.route('/', methods=['POST'])
 def webhook():
   data = request.get_json()
+  usrmg = data['text'].lower()
   now = datetime.datetime.today()
   day = now.weekday()
   msg = ''
-  # We don't want to reply to ourselves!
 	
   if data['name'] != 'Principles Quiz Bot':
-    if "quiz" in data['text'] and "exam" in data['text']:
+    if "quiz" in usrmg and "exam" in usrmg:
       msg = '{}, please specify if you are talking about a quiz or exam.'.format(data['name'])
-    elif "quiz" in data['text']:
-      if "today" in data['text'] and day == 0:
+    elif "quiz" in usrmg:
+      if "today" in usrmg and day == 0:
         msg = '{}, yes. There is a quiz today.'.format(data['name'])
-      elif "today" in data['text'] and day != 0:
+      elif "today" in usrmg and day != 0:
         msg = '{}, no. The next quiz is on Monday the 29th.'.format(data['name'])
-      elif "tomorrow" in data['text']:
+      elif "tomorrow" in usrmg:
         if day + 1 == 0:
           msg = '{}, yes. There is a quiz tomorrow.'.format(data['name'])
         else:
           msg = '{}, no. There is NOT a quiz tomorrow.'.format(data['name'])
-      elif "when" in data['text'] or "what day" in data['text']:
+      elif "when" in usrmg or "what day" in usrmg:
         msg = '{}, the next quiz is on Monday the 29th.'.format(data['name'])
-      elif "quiz about" in data['text'] or "cover" in data['text'] or "over" in data['text']:
+      elif "quiz about" in usrmg or "cover" in usrmg or "over" in usrmg:
         msg = '{}, I do not know what the next quiz is over because my creator had a dentist appointment.'.format(data['name'])
-    elif "final" in data['text'] or "exam" in data['text']:
-      if "when" in data['text']:
+    elif "final" in usrmg or "exam" in usrmg:
+      if "when" in usrmg:
         msg = '{}, the final exam is on Monday, May 6th at 4:30PM.'.format(data['name'])
   if len(msg) != 0:
       send_message(msg)
