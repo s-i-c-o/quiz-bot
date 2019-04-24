@@ -33,8 +33,8 @@ def webhook():
           msg = '{}, no. There is NOT a quiz tomorrow.'.format(data['name'])
       elif "when" in usrmg or "what day" in usrmg:
         msg = '{}, the next quiz is on Monday the 29th.'.format(data['name'])
-      elif "quiz about" in usrmg or "cover" in usrmg or "over" in usrmg:
-        msg = '{}, I do not know what the next quiz is over because my creator had a dentist appointment.'.format(data['name'])
+      elif "quiz about" in usrmg or "cover" in usrmg or "over" in usrmg or "about" in usrmsg:
+        msg = '{}, the quiz Monday will cover dangling references in C and C++.'.format(data['name'])
     elif "final" in usrmg or "exam" in usrmg:
       if "when" in usrmg:
         msg = '{}, the final exam is on Monday, May 6th at 4:30PM.'.format(data['name'])
