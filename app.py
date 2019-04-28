@@ -16,6 +16,12 @@ def webhook():
   usrmg = data['text'].lower()
   now = datetime.datetime.today()
   day = now.weekday()
+  tomorrow = now.weekday()
+  if (day + 1 > 6)
+    tomorrow = 0
+  else
+    tomorrow = day + 1
+  
   msg = ''
 	
   if data['name'] != 'Principles Quiz Bot':
@@ -27,7 +33,7 @@ def webhook():
       elif "today" in usrmg and day != 0:
         msg = '{}, no. The next quiz is on Monday the 29th.'.format(data['name'])
       elif "tomorrow" in usrmg:
-        if day + 1 == 0:
+        if tomorrow == 0:
           msg = '{}, yes. There is a quiz tomorrow.'.format(data['name'])
         else:
           msg = '{}, no. There is NOT a quiz tomorrow.'.format(data['name'])
