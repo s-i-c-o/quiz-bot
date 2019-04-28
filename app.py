@@ -17,9 +17,9 @@ def webhook():
   now = datetime.datetime.today()
   day = now.weekday()
   tomorrow = now.weekday()
-  if (day + 1 > 6)
+  if day + 1 > 6:
     tomorrow = 0
-  else
+  else:
     tomorrow = day + 1
   
   msg = ''
