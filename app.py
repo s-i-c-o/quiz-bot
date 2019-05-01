@@ -44,6 +44,8 @@ def webhook():
     elif "final" in usrmg or "exam" in usrmg:
       if "when" in usrmg:
         msg = '{}, the final exam is on Monday, May 6th at 4:30PM.'.format(data['name'])
+      if "notes" in usrmg:
+        msg = '{}, you get 3 pages (front and back) of notes for the final.'.format(data['name'])
   if len(msg) != 0:
       send_message(msg)
 
