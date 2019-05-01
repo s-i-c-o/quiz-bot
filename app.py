@@ -29,18 +29,18 @@ def webhook():
       msg = '{}, please specify if you are talking about a quiz or exam.'.format(data['name'])
     elif "quiz" in usrmg:
       if "today" in usrmg and day == 0:
-        msg = '{}, yes. There is a quiz today.'.format(data['name'])
+        msg = '{}, there are no more quizzes. Just the final.'.format(data['name'])
       elif "today" in usrmg and day != 0:
-        msg = '{}, no. The next quiz is on Monday the 29th.'.format(data['name'])
+        msg = '{}, there are no more quizzes. Just the final.'.format(data['name'])
       elif "tomorrow" in usrmg:
         if tomorrow == 0:
-          msg = '{}, yes. There is a quiz tomorrow.'.format(data['name'])
+          msg = '{}, there are no more quizzes. Just the final.'.format(data['name'])
         else:
-          msg = '{}, no. There is NOT a quiz tomorrow.'.format(data['name'])
+          msg = '{}, there are no more quizzes. Just the final.'.format(data['name'])
       elif "when" in usrmg or "what day" in usrmg:
-        msg = '{}, the next quiz is on Monday the 29th.'.format(data['name'])
+        msg = '{}, there are no more quizzes. Just the final.'.format(data['name'])
       elif "quiz about" in usrmg or "cover" in usrmg or "over" in usrmg or "about" in usrmsg:
-        msg = '{}, the quiz Monday will cover dangling references and garbage collection in C and C++. Have to describe strategy of automatic garbage collection. See section 8.5 in the book.'.format(data['name'])
+        msg = '{}, there are no more quizzes. Just the final.'.format(data['name'])
     elif "final" in usrmg or "exam" in usrmg:
       if "when" in usrmg:
         msg = '{}, the final exam is on Monday, May 6th at 4:30PM.'.format(data['name'])
